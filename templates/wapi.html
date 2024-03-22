@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="/static/css/wapi.css">
+    <link rel="icon" type="image/x-icon" href="/static/assets/images/logo.png">
+</head>
+<body>
+    <div class="vid-container">
+        <video id="Video1" class="bgvid back" autoplay muted preload loop>
+            <source src="/static/assets/videos/beach.mp4" type="video/mp4">
+        </video>
+        <div class="inner-container">
+            <div class="box">
+                <h1>Current Weather Update</h1>
+                <form action="/wapi" method="POST">
+                    <label for="city">Enter City :</label>
+                    <input type="text" id="city" name="city" required>
+                    <button type="submit">Get Weather</button>
+                </form>
+                <h1>Current Weather</h1>
+                {% if weather %}
+                    <p>City: {{ weather.city }}</p>
+                    <p>Temperature: {{ weather.temperature }}°C</p>
+                    <p>Condition: {{ weather.condition }}</p>
+                    <p>Humidity: {{ weather.humidity }}%</p>
+                {% else %}
+                    <p>No weather data available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
