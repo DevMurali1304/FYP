@@ -80,7 +80,7 @@ def weather():
                 }
                 return redirect(url_for('user'))
             else:
-                return "Error fetching weather data. Please try again."
+                return render_template('error.html')
         else:
             return "City not provided in the form."
     else:
@@ -100,6 +100,9 @@ def user():
         return "No weather data available."
     
 
+@app.route('/weather') 
+def weather2():
+  return render_template('weather.html')
 
 @app.route('/about') 
 def aboutus():
